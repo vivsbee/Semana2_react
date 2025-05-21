@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-// import './App.css'
-
-
+import './App.css'
 
 function App() {
 
-  let count1 = 0; //variable de JavaScript
-  const [count2, setCount2] = useState(0) //variable de estado
+  //variable con JavaScript
+  let count1 = 0;
+
+  //variable con React
+  const [count2, setCount2] = useState(0); //Variable number
+  const [texto, setTexto] = useState(""); //Variable string
+  const [booleano, setBooleano] = useState(false); //Variable boolean
+  const [array, setarray] = useState(1,2,3,4) //Variable Array
 
   function handleCount () {
     // count1 = count + 1
@@ -17,6 +21,18 @@ function App() {
     console.log('Count: ' + count1)
     setCount2(count2 + 1)
   }
+
+  // la función que se debe ejecutar, [variable de estado de la que depende la acción]
+  useEffect(()=>{
+    if(count2 === 5){
+      alert('Clickeaste el botón 5 veces :)')
+    }
+  } , [count2]);
+
+  // Tambien pueden generar acciones la primera vez que se renderiza el componente
+  useEffect(()=>{
+    alert('Bienvenidooos a los hooks con React')
+  }, []);
 
   return (
     <>
